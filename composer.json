@@ -16,6 +16,12 @@
         }
     },
     "require": {
-        "slim/slim": "^3.11"
+        "slim/slim": "^3.11",
+        "erusev/parsedown": "^1.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "SotonJitsu\\": "src/"
+        }
     }
 }
