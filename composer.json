@@ -1,0 +1,21 @@
+{
+    "name": "southamptonjitsu/website",
+    "description": "Southampton Jitsu Club Website",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Clark Sirl",
+            "email": "click66@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "config": {
+        "platform": {
+            "php": "5.6.38"
+        }
+    },
+    "require": {
+        "slim/slim": "^3.11"
+    }
+}
