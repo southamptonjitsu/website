@@ -1,0 +1,246 @@
+<header>
+    <div style="position:absolute;
+             top:0;
+             right:0;
+             left:0;
+             bottom:0;
+             width:100%;
+             height:100%;">
+        <div style="position:absolute;margin:0 auto;width:75em;top:0;left:50%;margin-left:-37.5em">
+            <h1 id="websiteTitle">
+                <span id="southampton">Southampton</span> <span id="jitsu">Jiu Jitsu</span> <span id="club">Club</span>
+            </h1>
+        </div>
+    </div>
+</header>
+
+<script>
+    var images = [];
+    images.push('/images/home/01.default.jpg');
+    images.push('/images/home/11807186_1681415108759356_2012583516355331398_o.jpg');
+    images.push('/images/home/11838844_1681415315426002_7943262589252491928_o.jpg');
+    images.push('/images/home/11864864_1686734318227435_7395144794963996504_o.jpg');
+    images.push('/images/home/12232709_10154371401844488_4064204128653645885_o.jpg');
+    images.push('/images/home/12247931_10154368627714488_1818566135957547328_o.jpg');
+    $('header').backstretch(images, {duration: 5000, fade: 750});
+</script>
+
+<script type="text/javascript" language="javascript">
+    $(function() {
+        $.fn.moveaway = function($targetContainer,options,callback) {
+
+            // This is the easiest way to have default options.
+            var settings = $.extend({
+                // These are the defaults.
+                animSpeed: 100,
+                shrinkFactor: null
+            }, options );
+
+            var callBackFunction = function() {
+                if (typeof callback === 'function') {
+                    callback();
+                }
+            };
+
+            return this.each(function() {
+
+                var $this = $(this);
+
+                // Get the original info so we know where it came from
+                var origLocationInfo = {
+                    'container':$this.parent(),
+                    'position':$this.css('position'),
+                    'top':$this.position().top,
+                    'left':$this.position().left,
+                    'offsetTop':$this.offset().top,
+                    'offsetLeft':$this.offset().left,
+                    'fontsize':$this.css('font-size')
+                };
+
+                // Calculate the size differential factor
+                if (settings.shrinkFactor === null) {
+                    settings.shrinkFactor = $targetContainer.width()/$this.width();
+                }
+
+                // Remove the object from the schema, keeping its relative document position
+                $this.css({
+                    'position':'absolute',
+                    'top':$this.offset().top,
+                    'left':$this.offset().left
+                });
+                $this.appendTo('body');
+
+                // Animate a movement to the new location and size
+                $this.stop().animate({
+                    'top':$targetContainer.offset().top,
+                    'left':$targetContainer.offset().left,
+                    'font-size':(parseInt($this.css('font-size'))*settings.shrinkFactor)+'px'
+                }, settings.animSpeed, function() {
+                    // Embed the object into the schema at its new location
+                    $this.appendTo($targetContainer);
+                    $this.animate({
+                        'top':0,
+                        'left':0
+                    },0,callBackFunction());
+                });
+
+                $this.on("moveback",function() {
+
+                    // Remove object from schema
+                    $this.css({
+                        'position':'absolute',
+                        'top':$this.offset().top,
+                        'left':$this.offset().left
+                    });
+                    $this.appendTo('body');
+
+                    // Animate movement to new location and size
+                    $this.stop().animate({
+                        'top':origLocationInfo.offsetTop,
+                        'left':origLocationInfo.offsetLeft,
+                        'font-size':origLocationInfo.fontsize
+                    }, settings.animSpeed, function() {
+                        // Embed object into schema at its original location
+
+                        $this.appendTo(origLocationInfo.container);
+                        $this.css({
+                            'top':origLocationInfo.top,
+                            'left':origLocationInfo.left,
+                            'position':origLocationInfo.position
+                        });
+                    });
+
+                });
+
+            });
+        };
+
+        $.fn.moveback = function(callback) {
+            $(this).trigger('moveback');
+
+            if (typeof callback === 'function') {
+                callback();
+            }
+
+            return $(this);
+        };
+    });
+
+    $(function() {
+return;
+        var position_logo = $("#websiteTitle").offset().top,
+            $target_logo = null;
+
+        $(window).scroll(function(){
+            if ($(window).scrollTop() > position_logo+100) {
+                if ($target_logo === null) {
+                    //putAway();
+                    $target_logo = $('#websiteTitle').moveaway($('#logoContainer'),100);
+
+                }
+            } else {
+                if ($target_logo !== null) {
+                    $target_logo.moveback();
+                    $target_logo = null;
+                }
+            }
+        });
+    });
+</script>
+
+<main>
+    <section markdown="1" class="row">
+        <div class="column large-12">
+            <?php echo $this->copy; ?>
+        </div>
+    </section>
+
+    <section id="home_news" class="row">
+        <div class="column large-12">
+            <h2>Latest Club News</h2>
+
+
+            <div class="row">
+                <div class="column large-8">
+                    <div class="newsItem newsItem_main">
+                        <div class="newsItem_image">
+                            <img src="/images/0/0/4/d/b/004dbea104dad149d8cccaabb4bfe15fbdd839d2-img-20170226-wa0006.jpeg">
+                        </div>
+                        <h3>
+                            <a href="/news/2017-randori-nationals">
+                                2017 Randori Nationals - Results!
+                            </a>
+                        </h3>
+                        <p>The randori nationals were the weekend! And what a successful weekend it was. Biggest SJC attendance and medal haul that I know of! Cherie, Ethan, Peter, Konstantin, Steph, Blaine, Clark, Sarah, Justin and Scott all fought brilliantly and did the club proud. All the hard work they've been putting in...</p>
+                        <em>
+                            <a href="/news/2017-randori-nationals">
+                                Read more...
+                            </a>
+                        </em>
+                    </div>
+                </div>
+                <div class="column large-4">
+                    <div class="row">
+                        <div class="column large-12">
+                            <div class="newsItem">
+                                <div class="newsItem_image">
+                                    <img src="/images/d/f/a/6/5/dfa65460ac0709f47c1e35285c9ca4c6ab59b971-11.jpeg">
+                                </div>
+                                <h3>
+                                    <a href="/news/new-venue-confirmed">
+                                        New Venue Confirmed
+                                    </a>
+                                </h3>
+                                <p>We have a new venue!
+                                    As of Feburary, lessons will now be taught at St Deny's Community Centre.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column large-12">
+                            <div class="newsItem">
+                                <div class="newsItem_image">
+                                    <img src="/images/a/9/c/a/f/a9cafc567c88a44a3f0dd0d4dd0c084b95e5d59f-12105839101561538511403239081032393493571893n.jpeg">
+                                </div>
+                                <h3>
+                                    <a href="/news/eamon-wins-silver">
+                                        Atemi Nationals
+                                    </a>
+                                </h3>
+                                <p>Eamon wins silver in the Yellow Category.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="row">
+        <div class="column large-4"><div class="iframe_responsive">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2515.1900013717764!2d-1.3907160845730067!3d50.920202179543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487473e2435a31f7%3A0xf7a713798c7f8350!2sSt+Denys+Community+Centre!5e0!3m2!1sen!2suk!4v1453664151722" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div></div>
+        <div class="column large-4" markdown="1">
+            <h2>Where to find us</h2>
+
+            <p>St Denys Community Centre<br />
+                Priory Road<br />
+                St. Denys<br />
+                Southampton<br />
+                SO17 2JZ</p>
+        </div>
+        <div class="column large-4" markdown="1">
+
+            <p><strong>Monday</strong><br />
+                1900-2030 (Junior)<br />
+                1900-2030 (Adult)</p>
+            <p><strong>Thursday</strong><br />
+                1915-2100 (Junior)<br />
+                1915-2130 (Adult)</p>
+        </div>
+    </section>
+
+
+    </div>
+    </div>
+</main>

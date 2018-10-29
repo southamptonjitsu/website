@@ -1,0 +1,505 @@
+* {
+  padding: 0;
+  margin: 0; }
+
+html {
+  overflow-y: scroll;
+  font-size: 1em;
+  font-family: Droid Sans; }
+
+a {
+  color: #666;
+  font-weight: bold;
+  text-decoration: none; }
+
+a img {
+  text-decoration: none !important; }
+
+a:hover, a:focus {
+  color: #cc2222; }
+
+.center {
+  text-align: center;
+  display: block; }
+
+img.center {
+  margin: 2em auto; }
+
+.bold {
+  font-weight: bold; }
+
+.hidden {
+  display: none !important; }
+
+/* Layout */
+.column > p > img,
+.column > img,
+.column > a > img,
+.columns > p > img,
+.columns > img,
+.columns > a > img {
+  margin: 0 auto;
+  display: block; }
+
+main > section {
+  margin-top: 1.5em !important;
+  margin-bottom: 1.5em !important; }
+
+main > article {
+  padding-top: 3em;
+  padding-bottom: 3em; }
+
+main > .row > .column > p > img,
+main > article > .row > .column > p > img {
+  display: block;
+  margin: 2em auto; }
+
+main article > section {
+  padding-top: 2em; }
+
+main article > section.first {
+  padding-top: 0; }
+
+main > article.contentBlock {
+  background-color: #ccc;
+  width: 100%;
+  padding: 2em 0; }
+
+aside {
+  font-size: 0.9em; }
+
+aside > div {
+  background-color: #dddddd;
+  padding: 2em;
+  margin-bottom: 2em; }
+
+aside > div.photoGallery ul li {
+  text-align: center; }
+
+aside > div.photoGallery ul li img {
+  border: 2px solid #444; }
+
+aside h3 {
+  font-size: 1.3em;
+  margin: 0.5em 0 0 0;
+  text-align: left; }
+
+aside h3:nth-child(1) {
+  margin-top: 0; }
+
+div.row {
+  position: relative; }
+
+.iframe_responsive {
+  position: relative;
+  padding-bottom: 75%;
+  height: 0;
+  overflow: hidden; }
+
+.iframe_responsive > iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important; }
+
+form input, form textarea {
+  border: 0;
+  padding: 0.5em;
+  margin-bottom: 1.5em;
+  display: inline-block;
+  width: 100%; }
+
+form textarea {
+  resize: none; }
+
+fieldset {
+  border: solid #ccc 1px; }
+
+form > fieldset {
+  padding: 1em; }
+
+/* Font styles */
+h2 {
+  margin: 0em 0 1em 0;
+  font-family: 'open_sanslight';
+  font-size: 1.5em; }
+
+h3 {
+  font-size: 1.5em;
+  margin: 0em 0 1em 0;
+  font-family: 'open_sanslight';
+  font-family: 'open_sanslight'; }
+
+p {
+  margin: 1em 0;
+  font-size: 0.9em; }
+
+p.small {
+  font-size: 0.8em; }
+
+p.large {
+  font-size: 1.2em; }
+
+p.x-large {
+  font-size: 2em; }
+
+article ul li {
+  margin-left: 1.5em;
+  margin-bottom: 0.5em; }
+
+/* Header */
+header {
+  background-image: url("../../images/bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #ccc;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  height: 680px;
+  /*@media screen and (min-width: $break-large) {
+    height:680px;
+  }*/ }
+  @media only screen and (max-device-width: 719px) {
+    header {
+      height: 280px; } }
+  @media only screen and (min-device-width: 720px) and (max-device-width: 1024px) {
+    header {
+      height: 400px; } }
+  header iframe {
+    z-index: 10; }
+
+h1#websiteTitle {
+  font-size: 2.7em;
+  display: block;
+  height: 7em;
+  width: 13em;
+  font-family: 'open_sansregular';
+  line-height: 1.5em;
+  position: absolute;
+  top: 200px;
+  left: 400px;
+  background-image: url("/images/jitsu-square-red.png");
+  background-position: 0.8em 1.6em;
+  background-repeat: no-repeat;
+  background-size: 2.7em;
+  /*    color:#1a1a1a;*/
+  color: #fff; }
+  @media only screen and (max-device-width: 719px) {
+    h1#websiteTitle {
+      top: 90px;
+      left: 450px;
+      font-size: 1.5em; } }
+  @media only screen and (min-device-width: 720px) and (max-device-width: 1024px) {
+    h1#websiteTitle {
+      top: 100px;
+      font-size: 2.5em; } }
+
+h1#websiteTitle > span {
+  position: absolute;
+  font-size: 2em; }
+
+h1#websiteTitle > span#southampton {
+  font-size: 1em;
+  top: 0em;
+  left: 5.2em; }
+
+h1#websiteTitle > span#jitsu {
+  font-family: AlternateGotNo1D;
+  font-size: 4em;
+  top: 0.59em;
+  left: 1em; }
+
+h1#websiteTitle > span#club {
+  font-size: 1.5em;
+  top: 3em;
+  right: 1em; }
+
+#logoContainer #websiteTitle {
+  color: #fff;
+  background-image: url("/images/jitsu-square-white.png"); }
+
+body.art header {
+  background-image: url("/images/page-banners/art.png"); }
+
+body.team header {
+  background-image: url("/images/page-banners/club.png"); }
+
+header h2 {
+  font-family: 'open_sanssemibold';
+  margin-top: 1.8em;
+  font-weight: normal;
+  font-size: 5em;
+  text-align: center;
+  z-index: 1000;
+  position: relative;
+  color: #fff; }
+
+.contact header h2 {
+  color: #000; }
+
+#topBar {
+  background-image: url("/images/transparent.png");
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  padding-top: 0.25em;
+  height: 5.5em; }
+  @media only screen and (max-device-width: 719px) {
+    #topBar {
+      display: none; } }
+
+#logoContainer {
+  float: left;
+  position: relative;
+  top: 5px;
+  width: 8.5em; }
+
+#navContainer {
+  width: 80%;
+  float: right;
+  position: relative; }
+
+header nav {
+  position: absolute;
+  font-size: 1.5em;
+  right: 0; }
+
+nav {
+  position: absolute;
+  z-index: 3000;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 900; }
+  @media only screen and (max-device-width: 719px) {
+    nav {
+      -webkit-transition: all 0.5s ease-in-out;
+      -moz-transition: all 0.5s ease-in-out;
+      -o-transition: all 0.5s ease-in-out;
+      -ms-transition: all 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out;
+      background-image: url("/images/transparent.png");
+      position: fixed;
+      top: 0;
+      left: -20em;
+      min-height: 100%;
+      width: 20em; }
+      nav.nav-active {
+        left: 0em; } }
+  nav ul {
+    list-style-type: none; }
+    nav ul li {
+      float: left;
+      display: inline;
+      padding: 0em 1.5em;
+      zoom: 1;
+      color: #fff;
+      /*font-family:'AlternateGotNo1D', Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;*/ }
+      nav ul li a {
+        color: inherit;
+        padding: 0.6em 0;
+        display: block; }
+      nav ul li.active {
+        background-color: #fff;
+        color: #000; }
+      nav ul li.homeLink {
+        display: none; }
+    @media only screen and (max-device-width: 719px) {
+      nav ul li {
+        width: 100%;
+        float: none; }
+        nav ul li.homeLink {
+          display: inline; } }
+  @media only screen and (min-device-width: 720px) and (max-device-width: 1024px), screen and (min-device-width: 1025px) {
+    nav {
+      position: fixed;
+      top: 0;
+      right: 10%;
+      font-size: 1em;
+      margin-top: 1.3em; } }
+
+.nav-mobile {
+  display: none;
+  cursor: pointer;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: #666 url("/images/icons/nav.svg") no-repeat center;
+  height: 40px;
+  width: 40px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  z-index: 2000; }
+  @media only screen and (max-device-width: 719px) {
+    .nav-mobile {
+      display: block; } }
+
+/*
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+  float:left;
+  display: inline;
+  padding: 0em 1.5em;
+  zoom:1;
+  color:#000;
+}
+nav ul li.active {
+    background-color: #fff;
+    color: #000;
+}
+
+nav ul li a {
+    color: inherit;
+    padding:0.6em 0;
+    display:block;
+}
+
+#navContainer nav ul li {
+    color:#fff;
+}
+*/
+#home_news .newsItem {
+  background-color: #eee;
+  height: 120px;
+  margin-bottom: 10px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 1em 0.5em 1em 130px; }
+
+#home_news .newsItem h3 {
+  font-size: 1em;
+  margin-bottom: 0.5em; }
+
+#home_news .newsItem p {
+  font-size: 0.7em;
+  margin: 0.5em 0; }
+
+#home_news .newsItem_main {
+  height: 250px;
+  padding-left: 270px; }
+
+#home_news .newsItem_main h3 {
+  font-size: 1.3em;
+  margin-bottom: 1em; }
+
+#home_news .newsItem_main p {
+  font-size: 1em; }
+
+#home_news .newsItem_image {
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+.newsItem .date {
+  position: relative;
+  top: -1.3em;
+  font-size: 0.9em;
+  color: #444; }
+
+/* Content */
+body.subpage main h2 {
+  text-align: center; }
+
+/* Image gallery */
+.imageGallery figure {
+  margin: 0; }
+.imageGallery .row {
+  margin-top: 1.5em; }
+.imageGallery a {
+  display: block;
+  margin-bottom: 10px;
+  overflow: hidden; }
+  .imageGallery a img {
+    max-width: none;
+    display: inline; }
+
+.mfp-bottom-bar {
+  display: none; }
+
+/* Footer */
+footer {
+  overflow: hidden;
+  background-color: #444;
+  font-size: 1em;
+  color: #fff;
+  padding: 1em 0 4em 0; }
+  footer h2 {
+    color: #ddd;
+    font-size: 2em;
+    font-family: 'AlternateGotNo1D'; }
+  footer ul.links {
+    list-style-type: none;
+    margin: 0; }
+  footer ul.links li {
+    margin-bottom: 1em; }
+  footer .social.links {
+    margin-top: 1.5em; }
+  footer .social.links div {
+    margin-bottom: 2em;
+    text-align: center; }
+  footer .social.links img {
+    width: 30px;
+    margin-right: 0.5em; }
+  footer div.social.links div.fullwidth {
+    width: 100%; }
+  footer div.social.links div.fullwidth img {
+    width: auto; }
+  footer > div.row > div.column {
+    margin-top: 1.4em;
+    font-size: 0.8em; }
+    @media only screen and (min-device-width: 1025px) {
+      footer > div.row > div.column.footerTjf {
+        margin-top: -1.4em; } }
+    footer > div.row > div.column.footerTjf img {
+      display: inline; }
+  footer #pageCopyright {
+    margin: 2em auto;
+    text-align: center;
+    font-size: 0.6em; }
+
+/* Error */
+#error {
+  margin: 5em auto;
+  width: 60em; }
+
+/* Generated by Font Squirrel (http://www.fontsquirrel.com) on July 22, 2015 */
+@font-face {
+  font-family: 'open_sanslight';
+  src: url("/di/dist/fonts/opensans-light-webfont.eot");
+  src: url("/dist/fonts/opensans-light-webfont.eot?#iefix") format("embedded-opentype"), url("/dist/fonts/opensans-light-webfont.woff2") format("woff2"), url("/dist/fonts/opensans-light-webfont.woff") format("woff"), url("/dist/fonts/opensans-light-webfont.ttf") format("truetype"), url("/dist/fonts/opensans-light-webfont.svg#open_sanslight") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'open_sanslight_italic';
+  src: url("/dist/fonts/opensans-lightitalic-webfont.eot");
+  src: url("/dist/fonts/opensans-lightitalic-webfont.eot?#iefix") format("embedded-opentype"), url("/dist/fonts/opensans-lightitalic-webfont.woff2") format("woff2"), url("/dist/fonts/opensans-lightitalic-webfont.woff") format("woff"), url("../fonts/opensans-lightitalic-webfont.ttf") format("truetype"), url("/dist/fonts/opensans-lightitalic-webfont.svg#open_sanslight_italic") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'open_sansregular';
+  src: url("/dist/fonts/opensans-regular-webfont.eot");
+  src: url("/dist/fonts/opensans-regular-webfont.eot?#iefix") format("embedded-opentype"), url("/dist/fonts/opensans-regular-webfont.woff2") format("woff2"), url("/dist/fonts/opensans-regular-webfont.woff") format("woff"), url("/dist/fonts/opensans-regular-webfont.ttf") format("truetype"), url("/dist/fonts/opensans-regular-webfont.svg#open_sansregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'open_sanssemibold';
+  src: url("/dist/fonts/opensans-semibold-webfont.eot");
+  src: url("/dist/fonts/opensans-semibold-webfont.eot?#iefix") format("embedded-opentype"), url("/dist/fonts/opensans-semibold-webfont.woff2") format("woff2"), url("/dist/fonts/opensans-semibold-webfont.woff") format("woff"), url("/dist/fonts/opensans-semibold-webfont.ttf") format("truetype"), url("/dist/fonts/opensans-semibold-webfont.svg#open_sanssemibold") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'AlternateGotNo1D';
+  src: url("/dist/fonts/2BD4F8_0_0.eot");
+  src: url("/dist/fonts/2BD4F8_0_0.eot?#iefix") format("embedded-opentype"), url("/dist/fonts/2BD4F8_0_0.woff") format("woff"), url("/dist/fonts/2BD4F8_0_0.ttf") format("truetype"); }
+
+/*# sourceMappingURL=main.css.map */
