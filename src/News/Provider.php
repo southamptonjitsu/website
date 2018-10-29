@@ -3,6 +3,7 @@
 namespace SotonJitsu\News;
 
 use SotonJitsu\Exception\CannotLoadFile;
+use SotonJitsu\Exception\InvalidMetadata;
 use SotonJitsu\Exception\InvalidType;
 use SotonJitsu\Parser\Yaml\Yaml as YamlParser;
 
@@ -26,28 +27,64 @@ class Provider
         $this->yamlParser = $yamlParser;
     }
 
-    public function readArticle($key)
+    /**
+     * @param int $count
+     * @return Article[]
+     */
+    public function readLast($count)
     {
-        $directory = "{$this->directory}/$key";
-
-        if (!file_exists($directory) || !is_readable($directory)) {
-            return null;
+        if (!is_int($count)) {
+            throw new InvalidType('Passed count must be an integer');
         }
 
-        $metadata = "$directory/meta.yaml";
-        $contents = "$directory/article.md";
+        return array_reduce(
+            array_slice(
+                array_diff(scandir($this->directory, 1), ['.', '..']),
+                0,
+                $count
+            ),
+            function ($acc, $key) {
+                $acc[$key] = $this->read($key);
+                return $acc;
+            },
+            []
+        );
+    }
 
-        if (!file_exists($metadata) || !is_readable($metadata)) {
-            throw new CannotLoadFile('Unable to load metadata file');
+    public function read($key)
+    {
+        if (!is_string($key)) {
+            throw new InvalidType('Passed key must be a string');
         }
 
-        if (!file_exists($contents) || !is_readable($contents)) {
-            throw new CannotLoadFile('Unable to load contents file');
+        return $this->makeArticle("{$this->directory}/$key");
+    }
+
+    private function makeArticle($directory)
+    {
+        $contentFile = "$directory/article.md";
+
+        if (!file_exists($contentFile) || !is_readable($contentFile)) {
+            throw new CannotLoadFile("Unable to load article contents from $contentFile");
         }
 
-        $metadata = $this->yamlParser->fromFile($metadata);
-        $contents = file_get_contents($contents);
+        $metadata = $this->yamlParser->fromFile("$directory/meta.yaml");
 
-        return new Article($metadata['title'], $contents);
+        $this->validateMetadata($metadata);
+
+        return new Article(
+            $metadata['title'],
+            file_get_contents($contentFile),
+            (new \DateTimeImmutable())->setTimestamp(strtotime($metadata['datetime']))
+        );
+    }
+
+    private function validateMetadata(array $metadata)
+    {
+        foreach (['title', 'datetime', 'description'] as $key) {
+            if (!isset($metadata[$key]) || !is_string($metadata[$key])) {
+                throw new InvalidMetadata("Key $key did not exist or was not a string in the supplied metadata");
+            }
+        }
     }
 }

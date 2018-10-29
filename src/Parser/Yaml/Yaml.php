@@ -9,7 +9,7 @@ class Yaml
     /**
      * @param string $filepath
      *
-     * @return string
+     * @return array
      */
     public function fromFile($filepath)
     {

@@ -8,10 +8,13 @@ class Article
 
     private $contents;
 
-    public function __construct($title, $contents)
+    private $dateTime;
+
+    public function __construct($title, $contents, \DateTimeImmutable $dateTime)
     {
         $this->title = $title;
         $this->contents = $contents;
+        $this->dateTime = $dateTime;
     }
 
     /**
@@ -36,5 +39,13 @@ class Article
     public function getContents()
     {
         return $this->contents;
+    }
+
+    /**
+     * @return \DateTimeImmutable
+     */
+    public function getDateTime()
+    {
+        return $this->dateTime;
     }
 }
