@@ -82,14 +82,16 @@ class Provider
 
     private function validateMetadata(array $metadata)
     {
-        foreach (['title', 'datetime', 'description'] as $key) {
+        foreach (['title', 'datetime'] as $key) {
             if (!isset($metadata[$key]) || !is_string($metadata[$key])) {
                 throw new InvalidMetadata("Key $key did not exist or was not a string in the supplied metadata");
             }
         }
 
-        if (isset($metadata['image']) && !is_string($metadata['image'])) {
-            throw new InvalidMetadata('Article image path was not a string');
+        foreach (['description', 'image'] as $optional) {
+            if (isset($metadata[$optional]) && !is_string($metadata[$optional])) {
+                throw new InvalidMetadata("Optional key $optional was supplied but not a string");
+            }
         }
     }
 }

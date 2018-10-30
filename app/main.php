@@ -26,7 +26,7 @@ function renderPage($content) {
 $mdReader = new \SotonJitsu\Markdown\Provider(new Parsedown());
 
 $newsProvider = new \SotonJitsu\News\Provider(
-    __DIR__ . '/../resources/pages/news',
+    __DIR__ . '/../resources/news',
     new \SotonJitsu\Parser\Yaml\Yaml()
 );
 
@@ -61,16 +61,25 @@ $app->get('/', function (Request $request, Response $response) use (
 });
 
 $app->get('/news', function (Request $request, Response $response) use ($mdReader, $newsProvider) {
+    $articles = $newsProvider->readLast(10);
+
     return $response->getBody()->write(
         renderPage(template('standard')->render([
             'title' => 'News',
-            'copy'  => array_reduce($newsProvider->readLast(10), function ($acc, \SotonJitsu\News\Article $article) use ($mdReader) {
-                return $acc . template('news/article')->render([
-                        'title'    => $article->getTitle(),
-                        'contents' => $mdReader->fromText($article->getContents()),
-                        'date'     => $article->getDateTime()->format('M d, Y'),
-                    ]);
-            }, ''),
+            'copy'  => array_reduce(
+                array_keys($articles),
+                function ($acc, $key) use ($articles, $mdReader) {
+                    $article = $articles[$key];
+
+                    return $acc . template('news/article')->render([
+                            'title'     => $article->getTitle(),
+                            'link'      => "/news/$key",
+                            'contents'  => $mdReader->fromText($article->getContents()),
+                            'date'      => $article->getDateTime()->format('M d, Y'),
+                        ]) . '<hr/>';
+                },
+                ''
+            ),
         ]))
     );
 });
