@@ -1,3 +1,5 @@
+![](/images/news/IMG-20170226-WA0006.jpg)
+
 The randori nationals were the weekend! And what a successful weekend it was. Biggest SJC attendance and medal haul that I know of! Cherie, Ethan, Peter, Konstantin, Steph, Blaine, Clark, Sarah, Justin and Scott all fought brilliantly and did the club proud. All the hard work they've been putting in in training paid off with the following results:
 
 Ethan: bronze groundfighting,

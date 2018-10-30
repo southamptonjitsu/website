@@ -10,11 +10,14 @@ class Article
 
     private $dateTime;
 
-    public function __construct($title, $contents, \DateTimeImmutable $dateTime)
+    private $image = null;
+
+    public function __construct($title, $contents, \DateTimeImmutable $dateTime, $image = null)
     {
         $this->title = $title;
         $this->contents = $contents;
         $this->dateTime = $dateTime;
+        $this->image = $image;
     }
 
     /**
@@ -26,11 +29,19 @@ class Article
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage()
     {
+        return $this->image;
+    }
 
+    /**
+     * @return bool
+     */
+    public function hasImage()
+    {
+        return isset($this->image);
     }
 
     /**

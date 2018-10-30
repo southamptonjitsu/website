@@ -75,7 +75,8 @@ class Provider
         return new Article(
             $metadata['title'],
             file_get_contents($contentFile),
-            (new \DateTimeImmutable())->setTimestamp(strtotime($metadata['datetime']))
+            (new \DateTimeImmutable())->setTimestamp(strtotime($metadata['datetime'])),
+            isset($metadata['image']) ? $metadata['image'] : null
         );
     }
 
@@ -85,6 +86,10 @@ class Provider
             if (!isset($metadata[$key]) || !is_string($metadata[$key])) {
                 throw new InvalidMetadata("Key $key did not exist or was not a string in the supplied metadata");
             }
+        }
+
+        if (isset($metadata['image']) && !is_string($metadata['image'])) {
+            throw new InvalidMetadata('Article image path was not a string');
         }
     }
 }
