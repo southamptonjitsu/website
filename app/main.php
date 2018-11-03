@@ -13,7 +13,17 @@ function template($path) {
 }
 
 function renderFooter() {
-    return template('common/footer')->render();
+    $config = require __DIR__ . '/../oauth.php';
+
+    $twitter = new SotonJitsu\Twitter\Reader(
+        new \GuzzleHttp\Client(['http_errors' => false]),
+        new \SotonJitsu\Twitter\Credentials($config->twitter->id, $config->twitter->secret),
+        new \SotonJitsu\Twitter\Cache\File(__DIR__ . '/../cache.txt')
+    );
+
+    return template('common/footer')->render([
+        'tjfTweet' => $twitter->getLatestTweet('132799450'),
+    ]);
 }
 
 function renderPage($content) {
