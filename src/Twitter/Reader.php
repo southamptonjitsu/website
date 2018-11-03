@@ -33,7 +33,13 @@ class Reader
         $request = (new \GuzzleHttp\Psr7\Request('GET', 'https://api.twitter.com/1.1/statuses/user_timeline.json?user_id=' . $userId . '&count=1'))
             ->withHeader('Authorization', "Bearer $token");
 
-        $tweet = json_decode($this->http->send($request)->getBody()->getContents())[0]->text;
+        $response = json_decode($this->http->send($request)->getBody()->getContents());
+
+        if (!is_array($response) || empty($response)) {
+            return '';
+        }
+
+        $tweet = $response[0]->text;
 
         if ($this->cache) {
             $this->cache->set($cacheKey, $tweet);
