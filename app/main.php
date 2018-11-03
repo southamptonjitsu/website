@@ -42,20 +42,21 @@ $app->get('/', function (Request $request, Response $response) use (
 ) {
     $articles = $newsProvider->readLast(3);
 
-    $article = function (\SotonJitsu\News\Article $article, $contentLength, $main = false) use ($mdReader) {
+    $article = function (\SotonJitsu\News\Article $article, $contentLength = 300, $main = false) use ($mdReader) {
         return template('home/news-article')->render([
-           'main' => $main,
-           'title' => $article->getTitle(),
-           'content' => substr(strip_tags($mdReader->fromText($article->getContents())), 0, $contentLength) . '...',
+            'main' => $main,
+            'title' => $article->getTitle(),
+            'content' => substr(strip_tags($mdReader->fromText($article->getContents())), 0, $contentLength) . '...',
+            'url'     => "/news/{$article->getKey()}",
+            'imageUrl' => $article->getImage(),
         ]);
     };
 
     return $response->getBody()->write(
         renderPage(template('home')->render([
             'copy' => $mdReader->fromFile(__DIR__ . '/../resources/pages/home/home.md'),
-            'article1' => $article($articles[array_keys($articles)[0]], 300, true),
-            'article2' => $article($articles[array_keys($articles)[1]], 100),
-            'article3' => $article($articles[array_keys($articles)[2]], 100),
+            'article1' => $article($articles[array_keys($articles)[0]]),
+            'article2' => $article($articles[array_keys($articles)[1]]),
         ]))
     );
 });
@@ -120,6 +121,7 @@ $app->get('/club', function (Request $request, Response $response) use ($mdReade
             'title' => 'The Club',
             'copy'  => template('club')->render([
                 'introduction' => $mdReader->fromFile(__DIR__ . '/../resources/pages/club/introduction.md'),
+                'members'      => $mdReader->fromFile(__DIR__ . '/../resources/pages/club/members.md'),
             ]),
         ]))
     );

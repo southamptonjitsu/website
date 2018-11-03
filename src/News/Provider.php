@@ -57,11 +57,12 @@ class Provider
             throw new InvalidType('Passed key must be a string');
         }
 
-        return $this->makeArticle("{$this->directory}/$key");
+        return $this->makeArticle($key);
     }
 
-    private function makeArticle($directory)
+    private function makeArticle($dirname)
     {
+        $directory = "{$this->directory}/$dirname";
         $contentFile = "$directory/article.md";
 
         if (!file_exists($contentFile) || !is_readable($contentFile)) {
@@ -73,6 +74,7 @@ class Provider
         $this->validateMetadata($metadata);
 
         return new Article(
+            $dirname,
             $metadata['title'],
             file_get_contents($contentFile),
             (new \DateTimeImmutable())->setTimestamp(strtotime($metadata['datetime'])),

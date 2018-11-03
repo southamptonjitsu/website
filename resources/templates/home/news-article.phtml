@@ -1,11 +1,8 @@
-<div class="newsItem <?php echo ($this->main) ? 'newsItem_main' : ''; ?>">
-    <?php /*
-    <div class="newsItem_image">
-        <img src="{{image.url}}">
-    </div>
-    */ ?>
-    <h3>
-        <?php echo $this->title; ?>
-    </h3>
-    <p><?php echo $this->content; ?></p>
+<div
+        class="newsItem"
+        data-url="<?php echo $this->url; ?>"
+        style="<?php echo (!isset($this->imageUrl) ? '' : "background-image: url({$this->imageUrl});"); ?>"
+        onclick="location.href = this.getAttribute('data-url');"
+>
+    <h3><?php echo $this->title; ?></h3>
 </div>

@@ -27,14 +27,14 @@
         <div class="row">
 
             <div class="column large-6">
-                <h3>Grading Fees</h3>
+                <h2>Grading Fees</h3>
                 <p>Junior<br>
                     £10<br>
                     Adult<br>
                     £15</p>
             </div>
             <div class="column large-6">
-                <h3>Annual Membership</h3>
+                <h2>Annual Membership</h3>
                 <p>Junior<br>
                     £18<br>
                     Adult<br>

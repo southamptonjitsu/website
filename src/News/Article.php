@@ -4,6 +4,8 @@ namespace SotonJitsu\News;
 
 class Article
 {
+    private $key;
+
     private $title;
 
     private $contents;
@@ -12,12 +14,21 @@ class Article
 
     private $image = null;
 
-    public function __construct($title, $contents, \DateTimeImmutable $dateTime, $image = null)
+    public function __construct($key, $title, $contents, \DateTimeImmutable $dateTime, $image = null)
     {
+        $this->key = $key;
         $this->title = $title;
         $this->contents = $contents;
         $this->dateTime = $dateTime;
         $this->image = $image;
+    }
+
+    /**
+     * @return string
+     */
+    public function getKey()
+    {
+        return $this->key;
     }
 
     /**
