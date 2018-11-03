@@ -1,13 +1,7 @@
 <header>
-    <div style="position:absolute;
-             top:0;
-             right:0;
-             left:0;
-             bottom:0;
-             width:100%;
-             height:100%;">
-        <div style="position:absolute;margin:0 auto;width:75em;top:0;left:50%;margin-left:-37.5em">
-            <h1 id="websiteTitle">
+    <div class="container">
+        <div id="bannerLogo">
+            <h1 class="websiteTitle">
                 <span id="southampton">Southampton</span> <span id="jitsu">Jiu Jitsu</span> <span id="club">Club</span>
             </h1>
         </div>
@@ -16,141 +10,17 @@
 
 <script>
     var images = [];
-    images.push('/images/home/01.default.jpg');
-    images.push('/images/home/11807186_1681415108759356_2012583516355331398_o.jpg');
     images.push('/images/home/11838844_1681415315426002_7943262589252491928_o.jpg');
+    images.push('/images/home/11807186_1681415108759356_2012583516355331398_o.jpg');
     images.push('/images/home/11864864_1686734318227435_7395144794963996504_o.jpg');
     images.push('/images/home/12232709_10154371401844488_4064204128653645885_o.jpg');
     images.push('/images/home/12247931_10154368627714488_1818566135957547328_o.jpg');
     $('header').backstretch(images, {duration: 5000, fade: 750});
 </script>
 
-<script type="text/javascript" language="javascript">
-    $(function() {
-        $.fn.moveaway = function($targetContainer,options,callback) {
-
-            // This is the easiest way to have default options.
-            var settings = $.extend({
-                // These are the defaults.
-                animSpeed: 100,
-                shrinkFactor: null
-            }, options );
-
-            var callBackFunction = function() {
-                if (typeof callback === 'function') {
-                    callback();
-                }
-            };
-
-            return this.each(function() {
-
-                var $this = $(this);
-
-                // Get the original info so we know where it came from
-                var origLocationInfo = {
-                    'container':$this.parent(),
-                    'position':$this.css('position'),
-                    'top':$this.position().top,
-                    'left':$this.position().left,
-                    'offsetTop':$this.offset().top,
-                    'offsetLeft':$this.offset().left,
-                    'fontsize':$this.css('font-size')
-                };
-
-                // Calculate the size differential factor
-                if (settings.shrinkFactor === null) {
-                    settings.shrinkFactor = $targetContainer.width()/$this.width();
-                }
-
-                // Remove the object from the schema, keeping its relative document position
-                $this.css({
-                    'position':'absolute',
-                    'top':$this.offset().top,
-                    'left':$this.offset().left
-                });
-                $this.appendTo('body');
-
-                // Animate a movement to the new location and size
-                $this.stop().animate({
-                    'top':$targetContainer.offset().top,
-                    'left':$targetContainer.offset().left,
-                    'font-size':(parseInt($this.css('font-size'))*settings.shrinkFactor)+'px'
-                }, settings.animSpeed, function() {
-                    // Embed the object into the schema at its new location
-                    $this.appendTo($targetContainer);
-                    $this.animate({
-                        'top':0,
-                        'left':0
-                    },0,callBackFunction());
-                });
-
-                $this.on("moveback",function() {
-
-                    // Remove object from schema
-                    $this.css({
-                        'position':'absolute',
-                        'top':$this.offset().top,
-                        'left':$this.offset().left
-                    });
-                    $this.appendTo('body');
-
-                    // Animate movement to new location and size
-                    $this.stop().animate({
-                        'top':origLocationInfo.offsetTop,
-                        'left':origLocationInfo.offsetLeft,
-                        'font-size':origLocationInfo.fontsize
-                    }, settings.animSpeed, function() {
-                        // Embed object into schema at its original location
-
-                        $this.appendTo(origLocationInfo.container);
-                        $this.css({
-                            'top':origLocationInfo.top,
-                            'left':origLocationInfo.left,
-                            'position':origLocationInfo.position
-                        });
-                    });
-
-                });
-
-            });
-        };
-
-        $.fn.moveback = function(callback) {
-            $(this).trigger('moveback');
-
-            if (typeof callback === 'function') {
-                callback();
-            }
-
-            return $(this);
-        };
-    });
-
-    $(function() {
-return;
-        var position_logo = $("#websiteTitle").offset().top,
-            $target_logo = null;
-
-        $(window).scroll(function(){
-            if ($(window).scrollTop() > position_logo+100) {
-                if ($target_logo === null) {
-                    //putAway();
-                    $target_logo = $('#websiteTitle').moveaway($('#logoContainer'),100);
-
-                }
-            } else {
-                if ($target_logo !== null) {
-                    $target_logo.moveback();
-                    $target_logo = null;
-                }
-            }
-        });
-    });
-</script>
-
 <main>
-    <section markdown="1" class="row">
-        <div class="column large-12">
+    <section markdown="1" class="row" id="homeCopyContainer">
+        <div class="column large-12" id="homeCopy">
             <?php echo $this->copy; ?>
         </div>
     </section>
@@ -203,8 +73,4 @@ return;
                 1915-2130 (Adult)</p>
         </div>
     </section>
-
-
-    </div>
-    </div>
 </main>
