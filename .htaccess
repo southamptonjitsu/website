@@ -12,5 +12,3 @@ RewriteRule ^ index.php [QSA,L]
 Options -Indexes
 DirectoryIndex index.php index.html index.htm
 # End - Prevent Browsing and Set Default Resources
-
-php_value date.timezone 'Europe/London'
