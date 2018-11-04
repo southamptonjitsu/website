@@ -187,7 +187,7 @@ article ul li {
 
 /* Header */
 header {
-    background-image: url("../../images/bg.jpg");
+    background-image: url("../../public_html/images/bg.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-color: #ccc;
@@ -608,7 +608,7 @@ footer #pageCopyright {
 @font-face {
     font-family: 'open_sanslight_italic';
     src: url("/dist/fonts/opensans-lightitalic-webfont.eot");
-    src: url("/dist/fonts/opensans-lightitalic-webfont.eot?#iefix") format("embedded-opentype"), url("/dist/fonts/opensans-lightitalic-webfont.woff2") format("woff2"), url("/dist/fonts/opensans-lightitalic-webfont.woff") format("woff"), url("../fonts/opensans-lightitalic-webfont.ttf") format("truetype"), url("/dist/fonts/opensans-lightitalic-webfont.svg#open_sanslight_italic") format("svg");
+    src: url("/dist/fonts/opensans-lightitalic-webfont.eot?#iefix") format("embedded-opentype"), url("/dist/fonts/opensans-lightitalic-webfont.woff2") format("woff2"), url("/dist/fonts/opensans-lightitalic-webfont.woff") format("woff"), url("../../public_html/dist/fonts/opensans-lightitalic-webfont.ttf") format("truetype"), url("/dist/fonts/opensans-lightitalic-webfont.svg#open_sanslight_italic") format("svg");
     font-weight: normal;
     font-style: normal;
 }
@@ -635,4 +635,3 @@ footer #pageCopyright {
     src: url("/dist/fonts/2BD4F8_0_0.eot?#iefix") format("embedded-opentype"), url("/dist/fonts/2BD4F8_0_0.woff") format("woff"), url("/dist/fonts/2BD4F8_0_0.ttf") format("truetype");
 }
 
-/*# sourceMappingURL=main.css.map */

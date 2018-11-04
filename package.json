@@ -1,0 +1,28 @@
+{
+  "name": "southamptonjitsu-website",
+  "version": "1.0.0",
+  "description": "The website of the Southampton Jitsu Club",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/southamptonjitsu/website.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/southamptonjitsu/website/issues"
+  },
+  "homepage": "https://github.com/southamptonjitsu/website#readme",
+  "devDependencies": {
+    "css-loader": "^1.0.1",
+    "file-loader": "^2.0.0",
+    "mini-css-extract-plugin": "^0.4.4",
+    "path": "^0.12.7",
+    "webpack": "^4.24.0",
+    "webpack-cli": "^3.1.2"
+  }
+}

@@ -1,5 +1,8 @@
 .DS_Store
 
 /.idea/
+/node_modules/
+/public_html/dist/css/
+/public_html/dist/js/
 /user/
 /vendor/
