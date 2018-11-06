@@ -20,7 +20,7 @@ module.exports = {
                 // }
             // },
             {
-                test: /\.css$/,
+                test: /\.(css|scss)$/,
                 // use:  [  'style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
                 use: [
                     MiniCssExtractPlugin.loader,
@@ -28,6 +28,7 @@ module.exports = {
                         loader: "css-loader",
                         options: { url: false }
                     },
+                    'sass-loader',
                 ]
             },
         ]
