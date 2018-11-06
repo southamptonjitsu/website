@@ -1,6 +1,6 @@
-var $ = require('./jquery');
+var $ = window.jQuery = require('jquery');
 
-require('./jquery.backstretch.min');
+require('jquery-backstretch');
 
 var images = [];
 images.push('/images/home/11838844_1681415315426002_7943262589252491928_o.jpg');
