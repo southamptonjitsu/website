@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode production",
-    "start": "npm install && webpack --progress --watch"
+    "init": "npm install && npm rebuild node-sass",
+    "build": "npm run init && webpack --mode production",
+    "start": "npm run init && webpack --progress --watch"
   },
   "repository": {
     "type": "git",

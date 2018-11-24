@@ -1,4 +1,4 @@
-version: "3"
+version: "3.2"
 
 services:
   app:
@@ -6,3 +6,8 @@ services:
      - 8080:80
     volumes:
      - .:/var/www/html
+
+  npm:
+    command: start
+    volumes:
+     - .:/app
