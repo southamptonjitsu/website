@@ -15,6 +15,6 @@ before_deploy:
 
 deploy:
   provider: script
-  script: bash deploy.sh $SSH_HOST $SSH_USER $SSH_PASS
+  script: bash deploy.sh $TRAVIS_BUILD_DIR $SSH_HOST $SSH_USER $SSH_PASS
   on:
     branch: master
