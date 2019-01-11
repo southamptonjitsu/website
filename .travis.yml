@@ -1,0 +1,13 @@
+language: ruby
+
+services:
+- docker
+
+script:
+- ./build.sh
+
+deploy:
+  provider: script
+  script: bash deploy.sh $SSH_HOST $SSH_USER $SSH_PASS
+  on:
+    branch: master
