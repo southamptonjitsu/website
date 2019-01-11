@@ -15,6 +15,7 @@ before_deploy:
 
 deploy:
   provider: script
+  skip_cleanup: true
   script: bash deploy.sh $TRAVIS_BUILD_DIR $SSH_HOST $SSH_USER $SSH_PASS
   on:
     branch: master
