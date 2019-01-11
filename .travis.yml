@@ -8,7 +8,7 @@ addons:
     packages:
     - sshpass
 script:
-- ./build.sh
+- ./build.sh $TRAVIS_BUILD_DIR
 
 before_deploy:
 - ssh-keyscan -H $SSH_HOST 2>&1 | tee -a $HOME/.ssh/known_hosts
