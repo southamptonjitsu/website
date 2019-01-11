@@ -8,6 +8,9 @@ addons:
     packages:
     - sshpass
 
+install:
+- echo $SSH_PUBK >> $HOME/.ssh/known_hosts
+
 script:
 - ./build.sh
 
