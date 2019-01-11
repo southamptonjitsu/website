@@ -3,6 +3,11 @@ language: ruby
 services:
 - docker
 
+addons:
+  apt:
+    packages:
+    - sshpass
+
 script:
 - ./build.sh
 
