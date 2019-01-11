@@ -7,12 +7,11 @@ addons:
   apt:
     packages:
     - sshpass
-
-install:
-- ssh-keyscan -H $SSH_HOST >> ~/.ssh/known_hosts
-
 script:
 - ./build.sh
+
+before_deploy:
+- ssh-keyscan -H $SSH_HOST 2>&1 | tee -a $HOME/.ssh/known_hosts
 
 deploy:
   provider: script
