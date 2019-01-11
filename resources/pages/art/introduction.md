@@ -12,5 +12,5 @@ Jiu-Jitsu is one of the oldest and best known martial art forms, our style is ca
 
 Regular practice of Jitsu will improve your:
 * **Strength**: You will see improvements in your fitness, co-ordination and posture, as well as general physical ability.
-* **Skills**: As well as applied situational awareness and self-defence skills, Jitsu nurtures your overall confidence and leadership ability
+* **Skills**: As well as applied situational awareness and self-defence skills, Jitsu nurtures your overall confidence and leadership ability.
 * **Spirit**: Jitsu requires a focused, yet relaxed mindset; this makes it a great way to hone your self-discipline and concentration.
