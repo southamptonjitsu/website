@@ -6,6 +6,13 @@ services:
     volumes:
       - app:/var/www/html
 
+  composer:
+    image: composer
+    volumes:
+      - type: volume
+        source: app
+        target: /app
+
   npm:
     image: node:11.1
     entrypoint: npm

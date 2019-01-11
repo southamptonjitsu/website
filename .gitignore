@@ -6,3 +6,5 @@
 /public_html/dist/js/
 /user/
 /vendor/
+
+*.tar.gz

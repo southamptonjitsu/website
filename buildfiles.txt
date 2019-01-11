@@ -1,0 +1,6 @@
+.htaccess
+app
+public_html
+resources
+src
+vendor

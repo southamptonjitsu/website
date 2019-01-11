@@ -7,6 +7,10 @@ services:
     volumes:
      - .:/var/www/html
 
+  composer:
+    volumes:
+     - .:/app
+
   npm:
     command: start
     volumes:
