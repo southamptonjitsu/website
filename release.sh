@@ -11,6 +11,7 @@ tar -xvzf $ARTIFACT_PATH -C $DEPLOY_DIR
 
 echo "Connecting static assets..."
 ln -sf ~/oauth.php "$DEPLOY_DIR/oauth.php"
+touch "$DEPLOY_DIR/cache.txt"
 
 echo "Making new release live..."
 ln -sfn $DEPLOY_DIR $SERVED_PATH
