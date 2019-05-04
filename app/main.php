@@ -52,9 +52,8 @@ $app->get('/', function (Request $request, Response $response) use (
 ) {
     $articles = $newsProvider->readLast(3);
 
-    $article = function (\SotonJitsu\News\Article $article, $contentLength = 300, $main = false) use ($mdReader) {
+    $article = function (\SotonJitsu\News\Article $article, $contentLength = 300) use ($mdReader) {
         return template('home/news-article')->render([
-            'main' => $main,
             'title' => $article->getTitle(),
             'content' => substr(strip_tags($mdReader->fromText($article->getContents())), 0, $contentLength) . '...',
             'url'     => "/news/{$article->getKey()}",
