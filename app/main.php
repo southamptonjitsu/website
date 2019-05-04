@@ -42,7 +42,7 @@ $newsProvider = new \SotonJitsu\News\Provider(
 
 $app = new \Slim\App([
     'settings' => [
-        'displayErrorDetails' => true
+        'displayErrorDetails' => getenv('DEBUG'),
     ]
 ]);
 
