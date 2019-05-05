@@ -2,6 +2,8 @@ version: "3.2"
 
 services:
   app:
+    environment:
+     - DEBUG=1
     ports:
      - 8080:80
     volumes:

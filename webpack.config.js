@@ -3,8 +3,8 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        main: './index.js',
-        home: './resources/js/home.js'
+        main: './client/index.js',
+        home: './client/js/home.js'
     },
     output: {
         path: path.resolve(__dirname, 'public_html/dist'),
