@@ -70,10 +70,18 @@ $app->get('/', function () use ($mdReader, $newsProvider) {
         ]);
     };
 
+    $spotlight = function () {
+        return template('home/news-article')->render([
+            'title' => 'A Look inside the Randori Nationals...',
+            'content' => 'Hello world!',
+        ]);
+    };
+
     return template('home')->render([
         'copy' => $mdReader->fromFile(__DIR__ . '/../resources/pages/home/home.md'),
         'article1' => $article($articles[array_keys($articles)[0]]),
         'article2' => $article($articles[array_keys($articles)[1]]),
+        'spotlight' => $spotlight(),
     ]);
 });
 
