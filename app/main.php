@@ -52,7 +52,7 @@ $app = new \Slim\App([
 
 $app->add(deferMiddleware(new Http\Renderer(
     new \Http\Factory\Diactoros\StreamFactory(),
-    template('page'),
+    template('new-page'),
     function () {
         return renderFooter();
     }
