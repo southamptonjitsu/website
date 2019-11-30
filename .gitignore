@@ -2,8 +2,7 @@
 
 /.idea/
 /node_modules/
-/public_html/dist/css/
-/public_html/dist/js/
+/public_html/dist/**
 /user/
 /vendor/
 

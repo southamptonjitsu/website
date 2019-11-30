@@ -30,7 +30,6 @@ p {
 
 .logo {
   font-weight: normal;
-  font-size: 2.7em;
 
   display: block;
   height: 7em;
@@ -91,46 +90,85 @@ p {
   background-position: center center;
   height: 100vh;
   position: relative;
-}
 
-#banner:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background-color: #000000;;
-  opacity: 0.6;
+  #topvideo {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    background-size: cover;
+    overflow: hidden;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #000000;;
+    opacity: 0.6;
+  }
+
+  #scrollIndicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    opacity: 0.6;
+
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+
+    border-top: 20px solid white;
+  }
 }
 
 header {
   position: relative;
   z-index: 10;
   color: white;
+  height: 100vh;
 
   #bannerLogo {
     position: absolute;
-    top: 5em;
-    right: 10%;
+    top: 50%;
+    right: 50%;
+    transform: translateY(-50%);
 
+    .logo {
+      font-size: 2em;
+    }
   }
 
   #welcomeText {
     position: absolute;
-    top: 23em;
-    left: 10%;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%);
+    border-left: 2px solid white;
+    padding-left: 1em;
+    margin-right: 10%;
 
-    h2 {
+    .blurb {
+      font-family: 'AlternateGotNo1D', 'Impact', 'sans-serif';
       text-transform: uppercase;
       margin-bottom: 0.2em;
-      font-size: 4em;
+      font-size: 7em;
+      line-height: 1em;
     }
 
     p {
-      font-family: 'AlternateGotNo1D', 'open_sansregular', 'sans-serif';
-      font-size: 2em;
-      margin: 0.3em 0;
+      font-family: 'open_sansregular', 'sans-serif';
+      font-size: 1em;
+      margin: 1em 0;
       color: #fff;
     }
   }

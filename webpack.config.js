@@ -15,7 +15,6 @@ module.exports = {
         rules: [
             {
                 test: /\.(css|scss)$/,
-                // use:  [  'style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
                 use: [
                     MiniCssExtractPlugin.loader,
                     {
@@ -25,6 +24,17 @@ module.exports = {
                     'sass-loader',
                 ]
             },
+            {
+                test: /\.(mp4|webm)$/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        // outputPath: 'assets/videos/',
+                        publicPath: 'dist/'
+                    },
+                }
+            }
         ]
     },
     plugins: [

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <link href="/dist/css/new.css" type="text/css" rel="stylesheet" />
+    <script src="/dist/js/new.js" type="text/javascript"></script>
 <!--    <script src="/dist/js/main.js" type="text/javascript"></script>-->
 
     <style>
@@ -9,7 +10,9 @@
 </head>
 <body>
     <div id="banner">
-        <div id="topBar">
+        <video id="topvideo" style="display:none;" crossorigin="anonymous" preload="auto" autoplay muted loop src=""></video>
+
+        <div id="topBar" style="display: none;">
             <div class="inner">
                 <div class="logo">
                     <span id="southampton">Southampton</span>
@@ -20,31 +23,34 @@
         </div>
 
         <header>
-            <div id="bannerLogo">
-                <h1 class="logo">
-                    <span id="southampton">Southampton</span> <span id="jitsu">Jiu Jitsu</span> <span id="club">Club</span>
-                </h1>
-            </div>
+            <div class="inner">
 
-            <div id="welcomeText">
-                <div>
-                    <h2>Technique. Body. Mind.</h2>
-                    <p>Improve your fitness; nurture your confidence; hone your self-discipline.</p>
-<!--                    <p>Welcome to Southampton Jiu Jitsu, the friendliest self-defence club on the south coast for almost 15 years.</p>-->
-                    <p>Two sessions free, discounts available for students.</p>
+                <div id="bannerLogo">
+                    <h1 class="logo">
+                        <span id="southampton">Southampton</span> <span id="jitsu">Jiu Jitsu</span> <span id="club">Club</span>
+                    </h1>
                 </div>
-<!--                <div>-->
-<!--                    <h2>Eat. Sleep. Train. Repeat.</h2>-->
-<!--                    <p>We are currently offering a free trial period of 2 sessions.</p>-->
-<!--                    <p>Discounts available for students.</p>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <h2>Get swept off your feet.</h2>-->
-<!--                    <p>We train twice a week, all year round. All you need to do is turn up wearing tracksuit bottoms and a t-shirt and you will be able to start straight away!</p>-->
-<!--                </div>-->
+
+                <div id="welcomeText">
+                    <span class="blurb">
+                        Technique //<br/>Body // Mind
+                    </span>
+<!--                            <p>Improve your fitness; nurture your confidence; hone your self-discipline. Welcome to the friendliest self-defence training club on the south coast.</p>-->
+
+                    <p>Welcome to Southampton Jiu Jitsu, the friendliest self-defence club on the south coast for almost 15 years.</p>
+                    <p>Try Jiu Jitsu today and get your first two sessions free.</p>
+                    <p>Discounts are available for students.</p>
+<!--                            <p>Two sessions free, discounts available for students.</p>-->
+
+
+                </div>
+
             </div>
         </header>
+
+        <span id="scrollIndicator"></span>
     </div>
+
 
     <section class="inner" id="home_news">
         <h2>Latest Club News</h2>
