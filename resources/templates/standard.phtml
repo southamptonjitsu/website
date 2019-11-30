@@ -1,12 +1,22 @@
-<header style="height:20em">
-    <div class="row">
-        <h1>
-            <?php echo $this->title; ?>
+<header class="pageTopper">
+    <div id="bannerLogo">
+        <h1 class="logo">
+            <span id="southampton">Southampton</span> <span id="jitsu">Jiu Jitsu</span> <span id="club">Club</span>
         </h1>
+    </div>
+
+    <div id="welcomeText">
+        <span class="blurb">
+            Eat. Sleep.<br/>Train. Repeat.
+        </span>
     </div>
 </header>
 
-<main>
+<section class="inner">
+    <a href="/" class="infoButton">Back to home</a>
+</section>
+
+<section class="inner">
     <?php echo $this->copy; ?>
-</main>
+</section>
 

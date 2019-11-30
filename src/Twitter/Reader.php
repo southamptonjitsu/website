@@ -7,11 +7,17 @@ use SotonJitsu\Twitter\Cache\Cache;
 
 class Reader
 {
+    /** @var Cache */
     private $cache;
 
+    /** @var Credentials */
     private $credentials;
 
+    /** @var ClientInterface */
     private $http;
+
+    /** @var bool */
+    private $enabled = true;
 
     public function __construct(ClientInterface $http, Credentials $credentials, Cache $cache = null)
     {
@@ -20,8 +26,17 @@ class Reader
         $this->cache = $cache;
     }
 
+    public function disable()
+    {
+        $this->enabled = false;
+    }
+
     public function getLatestTweet($userId)
     {
+        if (!$this->enabled) {
+            return '';
+        }
+
         $cacheKey = 'latestTweet.' . $userId;
 
         if ($this->cache && $this->cache->has($cacheKey)) {

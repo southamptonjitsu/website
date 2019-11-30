@@ -1,0 +1,15 @@
+header.pageTopper {
+  height: 20em;
+  background: #ccc url('/images/bg.jpg') no-repeat center;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #000000;;
+    opacity: 0.6;
+  }
+}

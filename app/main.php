@@ -32,6 +32,10 @@ function renderFooter()
         new \SotonJitsu\Twitter\Cache\File(__DIR__ . '/../cache.txt')
     );
 
+    if (!isset($config->twitter)) {
+        $twitter->disable();
+    }
+
     return template('common/footer')->render([
         'tjfTweet' => $twitter->getLatestTweet('132799450'),
     ]);
@@ -52,7 +56,7 @@ $app = new \Slim\App([
 
 $app->add(deferMiddleware(new Http\Renderer(
     new \Http\Factory\Diactoros\StreamFactory(),
-    template('new-page'),
+    template('page'),
     function () {
         return renderFooter();
     }

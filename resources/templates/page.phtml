@@ -17,63 +17,13 @@
     <link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png" />
 
-    <title>Home | Southampton Jitsu Club</title>
-
+    <title>Southampton Jitsu Club</title>
     <link href="/dist/css/main.css" type="text/css" rel="stylesheet" />
     <script src="/dist/js/main.js" type="text/javascript"></script>
 </head>
+<body>
+    <?=$this->content?>
 
-<body class="">
-<div id="topBar">
-    <div class="row">
-        <div id="logoContainer">
-            <h1 onclick="location.href = '/';" class="websiteTitle">
-                <span id="southampton">Southampton</span> <span id="jitsu">Jiu Jitsu</span> <span id="club">Club</span>
-            </h1>
-        </div>
-    </div>
-</div>
-
-<div class="nav-mobile"></div>
-<nav style="">
-    <ul>
-        <li class="homeLink">
-            <a href="/">
-                Home
-            </a>
-        </li>
-        <li>
-            <a href="/art">
-                The Art
-            </a>
-        </li>
-        <li>
-            <a href="/club">
-                The Club
-            </a>
-        </li>
-        <li>
-            <a href="/news">
-                News
-            </a>
-        </li>
-        <li>
-            <a href="/pricing">
-                Pricing &amp; Membership
-            </a>
-        </li>
-        <li>
-            <a href="/contact">
-                Contact
-            </a>
-        </li>
-    </ul>
-</nav>
-
-
-<?php echo $this->content; ?>
-
-<?php echo $this->footer; ?>
-
+    <?=$this->footer?>
 </body>
 </html>

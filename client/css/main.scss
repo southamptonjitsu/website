@@ -450,56 +450,6 @@ body.subpage main h2 {
     display: none;
 }
 
-/* Footer */
-footer {
-    overflow: hidden;
-    background-color: #444;
-    font-size: 1em;
-    color: #fff;
-    padding: 1em 0 4em 0;
-}
-
-footer h2 {
-    color: #ddd;
-    font-size: 2em;
-    font-family: 'AlternateGotNo1D';
-}
-
-footer ul.links {
-    list-style-type: none;
-    margin: 0;
-}
-
-footer ul.links li {
-    margin-bottom: 1em;
-}
-
-footer .social.links {
-    margin-top: 1.5em;
-}
-
-footer .social.links div {
-    margin-bottom: 2em;
-    text-align: center;
-}
-
-footer .social.links img {
-    width: 30px;
-    margin-right: 0.5em;
-}
-
-footer div.social.links div.fullwidth {
-    width: 100%;
-}
-
-footer div.social.links div.fullwidth img {
-    width: auto;
-}
-
-footer > div.row > div.column {
-    margin-top: 1.4em;
-    font-size: 0.8em;
-}
 
 @media only screen and (min-device-width: 1025px) {
     footer > div.row > div.column.footerTjf {
