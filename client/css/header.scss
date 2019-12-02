@@ -1,0 +1,81 @@
+header {
+  position: relative;
+  z-index: 10;
+  color: white;
+  overflow: hidden;
+
+  &.home {
+    height: 100vh;
+  }
+
+  #bannerLogo {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+
+    .logo {
+      font-size: 2em;
+    }
+  }
+
+  #welcomeText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%);
+    border-left: 2px solid white;
+    padding-left: 1em;
+    margin-right: 10%;
+    z-index: 10;
+
+    .blurb {
+      font-family: 'AlternateGotNo1D', 'Impact', 'sans-serif';
+      text-transform: uppercase;
+      margin-bottom: 0.2em;
+      font-size: 7em;
+      line-height: 1em;
+    }
+
+    p {
+      font-family: 'open_sansregular', 'sans-serif';
+      font-size: 1em;
+      margin: 1em 0;
+      color: #fff;
+    }
+  }
+
+  @include for-phone-portrait-down {
+    #bannerLogo {
+      transform: none;
+      top: 10px;
+      right: 0;
+
+      .logo {
+        font-size: 1em;
+      }
+    }
+
+    #welcomeText {
+      border-left: none;
+      left: 0;
+    }
+  }
+
+  @include for-phone-landscape {
+    #bannerLogo .logo {
+      font-size: 3.5vw;
+    }
+
+    #welcomeText {
+      .blurb {
+        font-size: 10vw;
+      }
+
+      p {
+        display: none;
+      }
+    }
+  }
+}

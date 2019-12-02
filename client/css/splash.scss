@@ -1,0 +1,73 @@
+#homeSplash {
+  .splashbox {
+    float:left;
+    display: table;
+    height: 400px;
+    width: 32%;
+    margin-right: 2%;
+    background-position: center;
+    position: relative;
+    color: #fff;
+    text-align: center;
+
+    .text {
+      display: table-cell;
+      z-index: 10;
+      position: relative;
+      padding: 2em;
+      vertical-align: middle;
+
+      .title {
+        @extend h2;
+        display: block;
+      }
+    }
+
+    &.strength {
+      background-image: url('/images/home/strength.png');
+    }
+
+    &.skill {
+      background-image: url('/images/home/skill.png');
+    }
+
+    &.spirit {
+      background-image: url('/images/home/spirit.png');
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-color: #000000;;
+      opacity: 0.6;
+    }
+  }
+
+  .splashbox:last-of-type
+  {
+    margin-right: 0;
+  }
+
+  &:after {
+    content: '';
+    clear:both;
+    display: block;
+  }
+
+  @include for-tablet-portrait-down {
+    .splashbox {
+      height: 200px;
+      width: 100%;
+      float: none;
+      margin: 0 0 0.5em 0;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

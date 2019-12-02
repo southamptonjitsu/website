@@ -74,6 +74,14 @@ footer {
     clear:both;
     display: block;
   }
+
+  @include for-tablet-portrait-down {
+    .contact, .connect, .footerTjf, #findUs .map, #findUs .schedule {
+      width: 100%;
+      float: none;
+      margin: 0 0 0.5em 0;
+    }
+  }
 }
 
 #pageCopyright {

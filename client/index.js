@@ -1,8 +1,4 @@
-import './css/fonts.scss';
 import './css/new.scss';
-import './css/footer.scss';
-
-import './css/standard.scss';
 
 import bgvid from './assets/jitsu-randoris-ethan.mp4';
 

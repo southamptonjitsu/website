@@ -1,3 +1,23 @@
+@mixin for-phone-portrait-down {
+  @media (max-width: 499px) { @content; }
+}
+@mixin for-phone-landscape {
+  @media (min-width: 500px) and (max-width: 900px) { @content; }
+}
+@mixin for-tablet-portrait-down {
+  @media (max-width: 599px) { @content; }
+}
+@mixin for-tablet-landscape-down {
+  @media (max-width: 899px) { @content; }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) { @content; }
+}
+
+@import './fonts';
+
+@import './header';
+
 * {
   padding: 0;
   margin: 0;
@@ -121,18 +141,20 @@ ul li {
   background-image:url('/images/home/hero.jpg');
   background-size: cover;
   background-position: center center;
+  width: 100vw;
   height: 100vh;
   position: relative;
+  overflow: hidden;
 
   #topvideo {
     position: absolute;
-    right: 0;
-    bottom: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     min-width: 100%;
     min-height: 100%;
     width: auto;
     height: auto;
-    background-size: cover;
     overflow: hidden;
   }
 
@@ -163,54 +185,6 @@ ul li {
   }
 }
 
-header {
-  position: relative;
-  z-index: 10;
-  color: white;
-  overflow: hidden;
-
-  &.home {
-    height: 100vh;
-  }
-
-  #bannerLogo {
-    position: absolute;
-    top: 50%;
-    right: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-
-    .logo {
-      font-size: 2em;
-    }
-  }
-
-  #welcomeText {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateY(-50%);
-    border-left: 2px solid white;
-    padding-left: 1em;
-    margin-right: 10%;
-    z-index: 10;
-
-    .blurb {
-      font-family: 'AlternateGotNo1D', 'Impact', 'sans-serif';
-      text-transform: uppercase;
-      margin-bottom: 0.2em;
-      font-size: 7em;
-      line-height: 1em;
-    }
-
-    p {
-      font-family: 'open_sansregular', 'sans-serif';
-      font-size: 1em;
-      margin: 1em 0;
-      color: #fff;
-    }
-  }
-}
 
 section {
   &.grey {
@@ -221,77 +195,6 @@ section {
     padding-top: 2em;
     padding-bottom: 2em;
   }
-}
-
-#home_news {
-  .newsItemWrap {
-    float: left;
-    width: 49%;
-    margin: 0.5em 1% 0.5em 0;
-  }
-
-  .newsItemWrap:last-of-type {
-    margin-left: 1%;
-    margin-right: 0;
-  }
-
-  .infoButton {
-    float: right;
-  }
-
-  &:after {
-    content: '';
-    clear:both;
-    display: block;
-  }
-}
-
-#home_news .newsItem {
-  width: 100%;
-  height: 300px;
-  overflow: hidden;
-  background-image: url('/images/home/01.default.jpg');
-  background-size: cover;
-  background-position: top;
-  cursor: pointer;
-  position: relative;
-}
-
-#home_news .newsItem:before {
-  content: ' ';
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #222;
-  z-index: 99;
-  opacity: 0;
-  width: 100%;
-  height: 100%;
-
-  -webkit-transition: all 0.1s ease-in-out;
-  -moz-transition: all 0.1s ease-in-out;
-  -o-transition: all 0.1s ease-in-out;
-  transition: all 0.1s ease-in-out;
-}
-
-#home_news .newsItem:hover:before {
-  opacity: 0.5;
-}
-
-.newsItem h3 {
-  height: 50%;
-  padding: 1em;
-  background-image: linear-gradient(180deg, #222, transparent);
-  color: #fff;
-  z-index: 100;
-  position: relative;
-}
-
-.newsItem .date {
-  position: relative;
-  top: -1.3em;
-  font-size: 0.9em;
-  color: #444;
 }
 
 #findUs {
@@ -320,6 +223,10 @@ section {
 
   .inner .copy {
     margin-right: 45%;
+
+    @include for-tablet-landscape-down {
+      margin-right: 30%;
+    }
   }
 
   &:before {
@@ -335,65 +242,20 @@ section {
     z-index: -10;
     transform: scaleX(-1);
   }
+
+  @include for-tablet-portrait-down {
+    &:before {
+      background-image: none;
+    }
+
+    .inner .copy {
+      margin-right: 0;
+    }
+  }
 }
 
-#homeSplash {
-  .splashbox {
-    float:left;
-    display: table;
-    height: 400px;
-    width: 32%;
-    margin-right: 2%;
-    background-position: center;
-    position: relative;
-    color: #fff;
-    text-align: center;
+@import './news';
+@import './splash';
 
-    .text {
-      display: table-cell;
-      z-index: 10;
-      position: relative;
-      padding: 2em;
-      vertical-align: middle;
-
-      .title {
-        @extend h2;
-        display: block;
-      }
-    }
-
-    &.strength {
-      background-image: url('/images/home/strength.png');
-    }
-
-    &.skill {
-      background-image: url('/images/home/skill.png');
-    }
-
-    &.spirit {
-      background-image: url('/images/home/spirit.png');
-    }
-
-    &:after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      background-color: #000000;;
-      opacity: 0.6;
-    }
-  }
-
-  .splashbox:last-of-type
-  {
-    margin-right: 0;
-  }
-
-  &:after {
-    content: '';
-    clear:both;
-    display: block;
-  }
-}
+@import './footer';
+@import './standard';
