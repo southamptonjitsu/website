@@ -14,3 +14,19 @@ import bgvid from './assets/jitsu-randoris-ethan.mp4';
     video.setAttribute('src', bgvid);
     video.style.display = 'block';
 })();
+
+const scroll = bar => boundary => function (current) {
+    console.log(current, bar, bar.offsetHeight);
+    if (current >= boundary) {
+        bar.classList.remove('hidden');
+        return;
+    }
+
+    bar.classList.add('hidden');
+};
+
+window.addEventListener('scroll', function () {
+    const bar = document.getElementById('topBar');
+    const banner = document.getElementById('banner');
+    scroll(bar)(banner.offsetHeight)(window.scrollY);
+});
