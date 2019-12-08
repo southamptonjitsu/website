@@ -1,11 +1,9 @@
-<section class="row">
-    <div class="column large-12">
-        <h2><?php echo ($this->link) ? "<a href=\"{$this->link}\">{$this->title}</a>" : $this->title; ?></h2>
+<article>
+    <h2><?php echo ($this->link) ? "<a href=\"{$this->link}\">{$this->title}</a>" : $this->title; ?></h2>
 
-        <div class="date">
-            <?php echo $this->date; ?>
-        </div>
-
-        <p><?php echo $this->contents; ?></p>
+    <div class="date">
+        <?php echo $this->date; ?>
     </div>
-</section>
+
+    <p><?php echo $this->contents; ?></p>
+</article>

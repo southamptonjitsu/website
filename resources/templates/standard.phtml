@@ -1,22 +1,22 @@
-<header class="pageTopper">
-    <div id="bannerLogo">
-        <h1 class="logo">
+<div id="topBar">
+    <div id="mainNavContainer" class="inner">
+        <span onclick="location.href = '/';" class="logo">
             <span id="southampton">Southampton</span> <span id="jitsu">Jiu Jitsu</span> <span id="club">Club</span>
-        </h1>
-    </div>
-
-    <div id="welcomeText">
-        <span class="blurb">
-            Eat. Sleep.<br/>Train. Repeat.
         </span>
+
+        <div class="mainNavigation">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/club">Club</a></li>
+                <li><a href="/news">News</a></li>
+            </ul>
+        </div>
     </div>
-</header>
+</div>
 
-<section class="inner">
-    <a href="/" class="infoButton">Back to home</a>
-</section>
-
-<section class="inner">
-    <?php echo $this->copy; ?>
+<section class="copy">
+    <div class="inner">
+        <?php echo $this->copy; ?>
+    </div>
 </section>
 

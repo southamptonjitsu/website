@@ -96,7 +96,7 @@ $app->get('/news', function () use ($mdReader, $newsProvider) {
                         'link' => "/news/$key",
                         'contents' => $mdReader->fromText($article->getContents()),
                         'date' => $article->getDateTime()->format('M d, Y'),
-                    ]) . '<hr/>';
+                    ]);
             },
             ''
         ),

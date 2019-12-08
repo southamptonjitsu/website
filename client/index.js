@@ -16,7 +16,6 @@ import bgvid from './assets/jitsu-randoris-ethan.mp4';
 })();
 
 const scroll = bar => boundary => function (current) {
-    console.log(current, bar, bar.offsetHeight);
     if (current >= boundary) {
         bar.classList.remove('hidden');
         return;
