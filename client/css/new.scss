@@ -150,7 +150,7 @@ article {
   z-index: 20;
   color: white;
   overflow: hidden;
-  transition: height 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
 
   #mainNavContainer {
     height: 100%;
@@ -166,11 +166,12 @@ article {
 
     font-size: 8px;
     background-image: url("/images/jitsu-square-white.png");
+    cursor: pointer;
   }
 
-  &.hidden {
-    height: 0;
+  &.hidden:not(:hover) {
     overflow: hidden;
+    opacity: 0.4;
   }
 
   @include for-tablet-landscape-down {
