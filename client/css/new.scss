@@ -52,7 +52,7 @@ h3 {
   font-size: 1.2em;
   font-weight: bold;
   font-family: 'open_sanslight', 'sans-serif';
-  margin: 0;
+  margin: 1em 0;
 }
 
 p {
@@ -71,6 +71,10 @@ ul li {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+span.bold {
+  font-weight: bold;
 }
 
 section.copy {

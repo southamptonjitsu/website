@@ -1,52 +1,33 @@
-<section class="row">
-    <div class="column large-12">
-        <?php echo $this->introduction; ?>
-    </div>
-</section>
-
-<article class="contentBlock">
-    <div class="row">
-        <div class="column large-12">
-            <p class="x-large center">
-                We look forward to seeing you on the mat!
-            </p>
-        </div>
-    </div>
+<article>
+<h2>The Art</h2>
+<?=$this->art;?>
 </article>
 
 <article>
-    <div class="row">
-        <div class="column large-12">
-            <?php echo $this->members; ?>
-        </div>
-    </div>
+<h2>The Club</h2>
+<?=$this->club;?>
+
+<h3>Frequently Asked Questions</h3>
+<h4>How much is it to train?</h4>
+<p>Your first two sessions are free, to allow you try the style to see if it is right for you. Standard fees are £5 for adults and £4 for juniors (under 18s). Concessions for students and unwaged and family discounts are available, at £4 for adults and £3.50 for juniors.</p>
+
+<h4>Are there any restrictions on who can train?</h4>
+<p>We are a mixed club of male and female members and we welcome children age 10 and up. Many of our members are parents who train with their children. As long as you have a clean bill of health, we look forward to seeing you on the mat!</p>
+<p>If you have any specific requirements, feel free to drop us an email.</p>
+
+<h4>What equipment do I need?</h4>
+<p>All you need to do is turn up wearing tracksuit bottoms and a t-shirt and you will be able to start straight away! If you begin to train on a regular basis you will be expected to purchase a gi (the white pyjamas!) in which to train. These are available through the club as availability dictates, or from various sport retailers.</p>
+
+<h4>Can I bring family members?</h4>
+<p>Yes! Jiu Jitsu is definitely an activity you can do as a family, and many of our members are parents who train with children. We also offer a family discount. Drop us an email for more details.</p>
+
+<h3>Details</h3>
+<p><span class="bold">Address:</span><br/>
+St Denys Community Centre<br>
+Priory Road<br>
+St. Denys<br>
+Southampton<br>
+SO17 2JZ</p>
+
+<p><span class="bold">Email:</span>&nbsp;info@southamptonjitsu.com</p>
 </article>
-
-<script>
-    $(document).ready(function() {
-        $('.imageGallery').magnificPopup({
-            delegate: 'a',
-            type: 'image',
-            closeOnContentClick: false,
-            closeBtnInside: false,
-            mainClass: 'mfp-with-zoom mfp-img-mobile',
-            image: {
-                verticalFit: true,
-                titleSrc: function(item) {
-                    return item.el.attr('title') + ' &middot; <a class="image-source-link" href="'+item.el.attr('data-source')+'" target="_blank">image source</a>';
-                }
-            },
-            gallery: {
-                enabled: true
-            },
-            zoom: {
-                enabled: true,
-                duration: 300, // don't foget to change the duration also in CSS
-                opener: function(element) {
-                    return element.find('img');
-                }
-            }
-
-        });
-    });
-</script>

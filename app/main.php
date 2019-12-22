@@ -133,8 +133,8 @@ $app->get('/club', function () use ($mdReader) {
     return template('standard')->render([
         'title' => 'The Club',
         'copy' => template('club')->render([
-            'introduction' => $mdReader->fromFile(__DIR__ . '/../resources/pages/club/introduction.md'),
-            'members' => $mdReader->fromFile(__DIR__ . '/../resources/pages/club/members.md'),
+            'art' => $mdReader->fromFile(__DIR__ . '/../resources/pages/club/art.md'),
+            'club' => $mdReader->fromFile(__DIR__ . '/../resources/pages/club/club.md'),
         ]),
     ]);
 });
