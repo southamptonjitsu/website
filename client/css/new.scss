@@ -34,13 +34,6 @@ img {
   vertical-align: middle;
 }
 
-.inner {
-  max-width: 75rem;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 0.5em;
-}
-
 h2 {
   font-family: 'AlternateGotNo1D', 'Impact', 'sans-serif';
   font-size: 3em;
@@ -89,6 +82,10 @@ article {
     display: block;
     margin: auto;
   }
+}
+
+.floatRight {
+  float: right;
 }
 
 .infoButton {
@@ -156,6 +153,13 @@ article {
   overflow: hidden;
   transition: opacity 0.3s ease-out;
 
+  .inner {
+    max-width: 75rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 0.5em;
+  }
+
   #mainNavContainer {
     height: 100%;
     position: relative;
@@ -176,12 +180,6 @@ article {
   &.hidden:not(:hover) {
     overflow: hidden;
     opacity: 0.4;
-  }
-
-  @include for-tablet-landscape-down {
-    & {
-      display: none;
-    }
   }
 
   .mainNavigation {
@@ -209,6 +207,12 @@ article {
           top: 50%;
           transform: translateY(-50%);
           margin: 0 30px;
+
+          @include for-tablet-landscape-down {
+            & {
+              margin: 0 10px;
+            }
+          }
         }
       }
     }
@@ -268,8 +272,10 @@ section {
   }
 
   > .inner, &.inner {
-    padding-top: 2em;
-    padding-bottom: 2em;
+    max-width: 75rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2em 0.5em;
   }
 }
 
@@ -326,6 +332,57 @@ section {
 
     .inner .copy {
       margin-right: 0;
+    }
+  }
+}
+
+.theArt {
+  .copy {
+    float: left;
+    width: 58%;
+    margin-right: 2%;
+  }
+
+  .images {
+    float: right;
+    width: 40%;
+
+    img {
+      display: block;
+      max-width: 100%;
+      margin-top: 10px;
+      margin-bottom: 10px;
+
+      &.stretch {
+        min-width: 100%;
+      }
+    }
+  }
+
+  &:after {
+    content: '';
+    clear:both;
+    display: block;
+  }
+
+  @include for-tablet-landscape-down {
+    .copy, .images {
+      float: none;
+      width: 100%;
+    }
+  }
+}
+
+.staffProfiles {
+  text-align: center;
+
+  > .profile {
+    display: inline-block;
+    padding: 10px 3%;
+    max-width: 25%;
+
+    img {
+      width: 100%;
     }
   }
 }
