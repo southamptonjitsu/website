@@ -119,16 +119,6 @@ $app->get('/news/{key:[a-z0-9\-]+}', function (Request $request) use (
     ]);
 });
 
-$app->get('/art', function () use ($mdReader) {
-    return template('standard')->render([
-        'title' => 'The Art',
-        'copy' => template('art')->render([
-            'introduction' => $mdReader->fromFile(__DIR__ . '/../resources/pages/art/introduction.md'),
-            'foundation' => $mdReader->fromFile(__DIR__ . '/../resources/pages/art/foundation.md'),
-        ]),
-    ]);
-});
-
 $app->get('/club', function () use ($mdReader) {
     return template('standard')->render([
         'title' => 'The Club',
@@ -136,20 +126,6 @@ $app->get('/club', function () use ($mdReader) {
             'art' => $mdReader->fromFile(__DIR__ . '/../resources/pages/club/art.md'),
             'club' => $mdReader->fromFile(__DIR__ . '/../resources/pages/club/club.md'),
         ]),
-    ]);
-});
-
-$app->get('/pricing', function () use ($mdReader) {
-    return template('standard')->render([
-        'title' => 'Pricing',
-        'copy' => $mdReader->fromFile(__DIR__ . '/../resources/pages/pricing/pricing.md'),
-    ]);
-});
-
-$app->get('/contact', function () use ($mdReader) {
-    return template('standard')->render([
-        'title' => 'Contact',
-        'copy' => $mdReader->fromFile(__DIR__ . '/../resources/pages/contact/contact.md'),
     ]);
 });
 

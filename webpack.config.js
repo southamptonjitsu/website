@@ -7,6 +7,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'public_html/dist'),
+        publicPath: 'dist/',
         filename: 'js/[name].js'
     },
     module: {
@@ -14,25 +15,43 @@ module.exports = {
             {
                 test: /\.(css|scss)$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            publicPath: '../../dist/'
+                        },
+                    },
+                    // MiniCssExtractPlugin.loader,
                     {
                         loader: "css-loader",
-                        options: { url: false }
+                        options: { url: true },
+                    },
+                    {
+                        loader: 'resolve-url-loader',
+                        options: {},
                     },
                     'sass-loader',
                 ]
             },
             {
-                test: /\.(mp4|webm)$/,
+                test: /\.(woff(2)?|ttf|eot|svg|mp4|webm|jpg)$/,
                 use: {
                     loader: 'file-loader',
                     options: {
                         name: '[name].[ext]',
-                        // outputPath: 'assets/videos/',
-                        publicPath: 'dist/'
                     },
                 }
-            }
+            },
+            // {
+            //     test: /\.(jpg)$/,
+            //     use: {
+            //         loader: 'url-loader',
+            //         options: {
+            //             name: '[name].[ext]',
+            //             publicPath: 'dist/'
+            //         },
+            //     }
+            // },
         ]
     },
     plugins: [
