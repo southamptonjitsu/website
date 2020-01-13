@@ -1,1 +1,1 @@
-# Southampton Jitsu Club Website
+# Southampton Jiu Jitsu Club Website

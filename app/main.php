@@ -1,9 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
+use Http\Factory\Diactoros\ResponseFactory;
+use Http\Factory\Diactoros\StreamFactory;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Server\MiddlewareInterface as Middleware;
 use SotonJitsu\Http;
+use SotonJitsu\Template;
 
 function deferMiddleware(Middleware $middleware): callable
 {
@@ -41,6 +46,13 @@ function renderFooter()
     ]);
 }
 
+function response(int $code, Template $content): Response
+{
+    return (new ResponseFactory())
+        ->createResponse($code)
+        ->withBody((new StreamFactory())->createStream($content->render()));
+}
+
 $mdReader = new \SotonJitsu\Markdown\Provider(new Parsedown());
 
 $newsProvider = new \SotonJitsu\News\Provider(
@@ -54,53 +66,65 @@ $app = new \Slim\App([
     ]
 ]);
 
-$app->add(deferMiddleware(new Http\Renderer(
-    new \Http\Factory\Diactoros\StreamFactory(),
-    template('page'),
-    function () {
-        return renderFooter();
-    }
-)));
+$app->add(deferMiddleware(new Http\Render(
+        new StreamFactory(),
+        new class implements Http\BuildTemplate
+        {
+            public function build(string $content): \SotonJitsu\Template
+            {
+                return template('page')
+                    ->with('content', $content)
+                    ->with('footer', renderFooter());
+            }
+        }
+    )
+));
 
 $app->get('/', function () use ($mdReader, $newsProvider) {
     $articles = $newsProvider->readLast(3);
 
     $article = function (\SotonJitsu\News\Article $article, $contentLength = 300) use ($mdReader) {
-        return template('home/news-article')->render([
-            'title' => $article->getTitle(),
-            'content' => substr(strip_tags($mdReader->fromText($article->getContents())), 0, $contentLength) . '...',
-            'url' => "/news/{$article->getKey()}",
-            'imageUrl' => $article->getImage(),
-        ]);
+        return template('home/news-article')
+            ->with('title', $article->getTitle())
+            ->with('content', substr(strip_tags($mdReader->fromText($article->getContents())), 0, $contentLength) . '...')
+            ->with('url', "/news/{$article->getKey()}")
+            ->with('imageUrl', $article->getImage());
     };
 
-    return template('home')->render([
-        'copy' => $mdReader->fromFile(__DIR__ . '/../resources/pages/home/home.md'),
-        'article1' => $article($articles[array_keys($articles)[0]]),
-        'article2' => $article($articles[array_keys($articles)[1]]),
-    ]);
+    return response(200, template('home')
+        ->with('copy', $mdReader->fromFile(__DIR__ . '/../resources/pages/home/home.md'))
+        ->with('article1', $article($articles[array_keys($articles)[0]]))
+        ->with('article2', $article($articles[array_keys($articles)[1]])));
+});
+
+$app->get('/club', function () use ($mdReader) {
+    return response(200, template('standard')
+        ->with('title', 'The Club')
+        ->with('copy', template('club')
+            ->with('art', $mdReader->fromFile(__DIR__ . '/../resources/pages/club/art.md'))
+            ->with('club', $mdReader->fromFile(__DIR__ . '/../resources/pages/club/club.md'))
+        ));
 });
 
 $app->get('/news', function () use ($mdReader, $newsProvider) {
     $articles = $newsProvider->readLast(10);
 
-    return template('standard')->render([
-        'title' => 'News',
-        'copy' => array_reduce(
+    return response(200, template('standard')
+        ->with('title', 'News')
+        ->with('copy', array_reduce(
             array_keys($articles),
-            function ($acc, $key) use ($articles, $mdReader) {
+            function (string $acc, string $key) use ($articles, $mdReader) {
                 $article = $articles[$key];
 
-                return $acc . template('news/article')->render([
-                        'title' => $article->getTitle(),
-                        'link' => "/news/$key",
-                        'contents' => $mdReader->fromText($article->getContents()),
-                        'date' => $article->getDateTime()->format('M d, Y'),
-                    ]);
+                return $acc . template('news/article')
+                    ->with('title', $article->getTitle())
+                    ->with('link', "/news/$key")
+                    ->with('contents', $mdReader->fromText($article->getContents()))
+                    ->with('data', $article->getDateTime()->format('M d, Y'));
             },
             ''
-        ),
-    ]);
+        ))
+    );
 });
 
 $app->get('/news/{key:[a-z0-9\-]+}', function (Request $request) use (
@@ -109,24 +133,13 @@ $app->get('/news/{key:[a-z0-9\-]+}', function (Request $request) use (
 ) {
     $article = $newsProvider->read($request->getAttribute('key'));
 
-    return template('standard')->render([
-        'title' => 'News',
-        'copy' => template('news/article')->render([
-            'title' => $article->getTitle(),
-            'contents' => $mdReader->fromText($article->getContents()),
-            'date' => $article->getDateTime()->format('M d, Y'),
-        ]),
-    ]);
-});
-
-$app->get('/club', function () use ($mdReader) {
-    return template('standard')->render([
-        'title' => 'The Club',
-        'copy' => template('club')->render([
-            'art' => $mdReader->fromFile(__DIR__ . '/../resources/pages/club/art.md'),
-            'club' => $mdReader->fromFile(__DIR__ . '/../resources/pages/club/club.md'),
-        ]),
-    ]);
+    return response(200, template('standard')
+        ->with('title', 'News')
+        ->with('copy', template('news/article')
+            ->with('title', $article->getTitle())
+            ->with('contents', $mdReader->fromText($article->getContents()))
+            ->with('date', $article->getDateTime()->format('M d, Y')))
+    );
 });
 
 $app->run();

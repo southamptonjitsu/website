@@ -11,31 +11,28 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use SotonJitsu\Template;
 
-final class Renderer implements MiddlewareInterface
+final class Render implements MiddlewareInterface
 {
-    /** @var Template */
-    private $base;
-
-    /** @var callable */
-    private $getFooter;
+    /** @var BuildTemplate */
+    private $buildTemplate;
 
     /** @var StreamFactoryInterface */
     private $streamFactory;
 
-    public function __construct(StreamFactoryInterface $streamFactory, Template $template, callable $getFooter)
+    public function __construct(StreamFactoryInterface $streamFactory, BuildTemplate $buildTemplate)
     {
+        $this->buildTemplate = $buildTemplate;
         $this->streamFactory = $streamFactory;
-        $this->base = $template;
-        $this->getFooter = $getFooter;
     }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $response = $handler->handle($request);
 
-        return $response->withBody($this->streamFactory->createStream($this->base->render([
-            'content' => $response->getBody(),
-            'footer'  => ($this->getFooter)(),
-        ])));
+        return $response->withBody(
+            $this->streamFactory->createStream(
+                $this->buildTemplate->build((string)$response->getBody())->render()
+            )
+        );
     }
 }

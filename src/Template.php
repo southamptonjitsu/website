@@ -6,6 +6,10 @@ use SotonJitsu\Exception\CannotLoadFile;
 
 class Template
 {
+    /** @var array */
+    private $data;
+
+    /** @var string */
     private $filepath;
 
     public function __construct($filepath)
@@ -13,12 +17,15 @@ class Template
         $this->filepath = $filepath;
     }
 
-    public function render($data = [])
+    public function with(string $key, $value): self
     {
-        if (is_array($data)) {
-            $data = (object)$data;
-        }
+        $clone = clone $this;
+        $clone->data[$key] = $value;
+        return $clone;
+    }
 
+    public function render(): string
+    {
         $sandbox = \Closure::bind(
             function () {
                 ob_start();
@@ -39,7 +46,7 @@ class Template
 
                 return ob_get_clean();
             },
-            $data
+            (object)$this->data
         );
 
 
@@ -51,5 +58,10 @@ class Template
 
             throw $exception;
         }
+    }
+
+    public function __toString(): string
+    {
+        return $this->render();
     }
 }
