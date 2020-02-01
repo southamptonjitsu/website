@@ -7,8 +7,9 @@ addons:
   apt:
     packages:
     - sshpass
+
 script:
-- ./build.sh $TRAVIS_BUILD_DIR
+- "./build.sh $TRAVIS_BUILD_DIR"
 
 before_deploy:
 - ssh-keyscan -H $SSH_HOST 2>&1 | tee -a $HOME/.ssh/known_hosts
@@ -19,3 +20,8 @@ deploy:
   script: bash deploy.sh $TRAVIS_BUILD_DIR $SSH_HOST $SSH_USER
   on:
     branch: master
+
+before_install:
+- openssl aes-256-cbc -K $encrypted_c1f97256f233_key -iv $encrypted_c1f97256f233_iv
+  -in travis_deploy.enc -out ./travis_deploy -d
+- ssh-add ./travis_deploy
