@@ -3,7 +3,6 @@
 BUILD_DIR=$1
 SSH_HOST=$2
 SSH_USER=$3
-SSH_PASS=$4
 
 NOW=`date +%Y%m%d%H%M%S%N`
 
