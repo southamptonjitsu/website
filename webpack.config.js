@@ -21,7 +21,6 @@ module.exports = {
                             publicPath: '../../dist/'
                         },
                     },
-                    // MiniCssExtractPlugin.loader,
                     {
                         loader: "css-loader",
                         options: { url: true },
@@ -42,16 +41,6 @@ module.exports = {
                     },
                 }
             },
-            // {
-            //     test: /\.(jpg)$/,
-            //     use: {
-            //         loader: 'url-loader',
-            //         options: {
-            //             name: '[name].[ext]',
-            //             publicPath: 'dist/'
-            //         },
-            //     }
-            // },
         ]
     },
     plugins: [
