@@ -11,7 +11,7 @@ ARTIFACT_NAME="app.tar.gz"
 ARTIFACT_PATH="./artifacts/$ARTIFACT_NAME"
 RELEASES_DIR="./releases"
 DEPLOY_DIR="$RELEASES_DIR/$NOW"
-SERVED_PATH="/var/www/sotonjitsu"
+SERVED_PATH="/var/www/sotonjitsu/current"
 
 echo "Copying file to remote server..."
 scp -r "$BUILD_DIR/$ARTIFACT_NAME" $SSH_USER@$SSH_HOST:$ARTIFACT_PATH
