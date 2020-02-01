@@ -9,7 +9,7 @@ NOW=`date +%Y%m%d%H%M%S%N`
 ARTIFACT_NAME="app.tar.gz"
 
 ARTIFACT_PATH="./artifacts/$ARTIFACT_NAME"
-RELEASES_DIR="./releases"
+RELEASES_DIR="/var/www/sotonjitsu/releases"
 DEPLOY_DIR="$RELEASES_DIR/$NOW"
 SERVED_PATH="/var/www/sotonjitsu/current"
 
